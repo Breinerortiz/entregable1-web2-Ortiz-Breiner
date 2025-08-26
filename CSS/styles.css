@@ -5,46 +5,47 @@ body {
   line-height: 1.6;
 }
 
-/* NAVBAR */
-.navbar {
+.portada {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+  padding: 10px 20px;
   background: #2c3e50;
-  color: white;
-  position: fixed;
-  width: 100%;
-  height: 60px;
- 
-
-
+  position: sticky;
 }
 
-.navbar .logo {
+/* Menú hamburguesa visible en pantallas pequeñas */
+.menu- {
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.menu-clases{
+  display: none; 
+  gap: 20px;     
+}
+
+.portada .logo {
   font-size: 1.5em;
   font-weight: bold;
   margin-left: 10px;
-  .lo{
-    width: 50px;
-  }
 }
 
-.menu-{
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-  margin-right: 20px;
+/* Imagen dentro de .logo */
+.portada .logo .lo {
+  width: 50px;
 }
 
-.hero {
+
+
+.presen {
   
   text-align: center; ;
   padding: 50px ;
   background: #696b6b;
 }
 
-.hero h1 {
+.presen h1 {
   font-size: 1em;
 }
 .uno{
@@ -53,8 +54,7 @@ body {
   margin-top: 20px;
 }
 
-.hero .btn {
-
+.presen .btn {
   display: inline-block;
   padding: 10px 20px;
   width: 100%;
@@ -70,50 +70,52 @@ body {
   width: 30px;
 }
 
+/* Estilo general para escritorio */
 .content {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column; /* texto arriba, imagen debajo */
+  text-align: center;
   background: #696b6b;
-  padding: 40px 20px;
-  border-bottom: 1px solid #ddd;
-  align-items: center;
+  padding: 15px;
+  gap: 15px;
 }
 
-
-
-.content .tex {
-  color: rgb(0, 0, 0);
-  line-height: 1.5;
-  margin-bottom: 20px;
+.content .text {
+  color: white;
+  text-align: justify;
 }
 
-/* Por defecto en pantallas pequeñas: imágenes en columna */
-.imagenes {
+.content .imagenes {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* columna = una debajo de la otra */
+  gap: 10px; /* espacio entre imágenes */
+  justify-content: center;
   align-items: center;
-  gap: 20px;
 }
 
-
-img {
-  width: 200px;
+.content .imagenes img {
+  max-width: 100%;
+  height: auto;
   border-radius: 10px;
 }
 
-/* 🔹 Cuando la pantalla es más grande (ej: más de 768px) se ponen en fila */
-
+ img { 
+  width: 200px;
+   border-radius: 10px; 
+    margin-top: 20px;
+  }
 
 .content p {
-         /* Ancho del recuadro */
-      height: 150px;      /* Alto del recuadro */
-      border: 1px solid #333;
-      padding: 10px;
-      overflow-y: auto;   /* Scroll vertical */
-      overflow-x: hidden; 
+  height: 150px;
+  border: 1px solid #333;
+  padding: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #695d5d; /* opcional: fondo blanco para contraste */
 }
 
-/* FOOTER */
+
+
 footer {
   background: #2c3e50;
   color: white;
@@ -121,53 +123,83 @@ footer {
   text-align: center;
 }
 
-footer .social a {
+footer .social  {
   margin: 0 10px;
   color: rgb(255, 5, 5);
   text-decoration: none;
 }
 
-/* --- RESPONSIVE DESIGN --- */
 
-/* Tablet */
-@media (max-width: 768px) {
-  .content {
-    flex-direction: column;
-    text-align: center;
+
+@media (min-width: 768px) {
+ #B, #D {
+    flex-direction: row; /* texto izq - imagen der */
   }
+
+  #C {
+    flex-direction: row-reverse; /* imagen izq - texto der */
+  }
+   .content .imagenes {
+    flex-direction: row; /* fila = una al lado de la otra */
+    gap: 20px;
+  }
+ .content .text {
+    font-size: 14px; /* letra más pequeña en tablet */
+  }
+
   .links {
     flex-wrap: wrap;
   }
   .link {
     flex: 1 1 45%;
   }
-  .navbar .menu {
+  .portada .menu {
     display: none;
   }
   .menu- {
     display: block;
   }
 }
-@media (min-width: 768px) {
-  .imagenes {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
 
-/* Celular */
-@media (min-width: 1024px) {
-   .content {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero h1 {
-    font-size: 1.8em;
-  }
-  .links {
+@media (max-width: 1024px) {
+  .content {
     flex-direction: column;
   }
-  .link {
+  .content .text, 
+  .content .imagenes {
     flex: 1 1 100%;
   }
+}
+/* Celular */
+@media (min-width: 1024px) {
+   .portada {
+    flex-direction: row;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+ 
+  .menu- {
+    display: none; 
+  }
+  .menu-clases {
+    display: flex; 
+    gap: 20px;     
+  }
+ .menu-clases a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);                 
+    background-color: #6c757d;   
+    padding: 10px 18px;
+    border-radius: 8px;           
+    font-weight: bold;
+    transition: 0.3s ease-in-out;
+  }
+ 
+
+  .presen h1 {
+    font-size: 2.5em;
+  }
+
 }
