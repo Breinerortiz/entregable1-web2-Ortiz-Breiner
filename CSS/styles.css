@@ -203,3 +203,9 @@ footer .social  {
   }
 
 }
+@media (min-width: 1025px) {
+  .content .imagenes img {
+    max-width: 200px; /* tamaño más grande */
+    height: auto;
+  }
+}
